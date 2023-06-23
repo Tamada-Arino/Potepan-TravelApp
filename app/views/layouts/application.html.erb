@@ -45,10 +45,10 @@
       <% end %>
     </header>
 
-    <% unless notice == nil || alert == nil%>
-      <div>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+    <% unless notice == nil && alert == nil%>
+      <div class="bg-light w-100 text-center">
+        <p class="notice text-info"><%= notice %></p>
+        <p class="alert text-danger"><%= alert %></p>
       </div>
     <% end %>
 
