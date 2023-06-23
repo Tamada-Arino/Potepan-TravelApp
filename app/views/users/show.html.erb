@@ -1,0 +1,37 @@
+<h3>設定</h3>
+
+<div class="">
+  <%= link_to"アカウント", users_path %>
+  <%= link_to"プロフィール", users_profile_path %>
+</div>
+
+<table class="w-100 mt-4 table">
+  <tr>
+    <th class="h3">プロフィール</th>
+    <td>
+		  <%= link_to"編集", edit_user_path %>
+    </td>
+  </tr>
+  <tr>
+    <th>アイコン画像</th>
+    <td>
+    	<% if current_user.avatar.attached? %>
+    		<%= image_tag current_user.avatar, class: "avatar" %>
+      <% else %>
+        <%= image_tag('default-avatar.png', class: "img-circle") %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>名前</th>
+    <td>
+      <%= current_user.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td>
+      <%= current_user.introduction %>
+    </td>
+  </tr>
+</table>

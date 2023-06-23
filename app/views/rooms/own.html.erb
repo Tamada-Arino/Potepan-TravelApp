@@ -1,0 +1,30 @@
+<h3>登録済み一覧</h3>
+<table class="w-100">
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>料金</th>
+      <th>作成日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td>
+          <% if room.image.attached? %>
+            <%= image_tag room.image, class: "table-image" %>
+          <% else %>
+            <%= image_tag 'default-image.png', class:"table-image" %>
+          <% end %>
+        </td>
+        <td><%= link_to "#{room.name}", room, class: "h4" %></td>
+        <td><%= room.introduction.truncate(30) %></td>
+        <td>￥<%= room.price.to_s(:delimited) %></td>
+        <td><%= room.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= button_to"削除", room, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

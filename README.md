@@ -22,4 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# Potepan-TravelApp
+
+
+devise installed
+rails g devise:i18n:views created
+

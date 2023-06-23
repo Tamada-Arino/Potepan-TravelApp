@@ -1,0 +1,31 @@
+<h3>再予約する</h3>
+
+<% if @reservation.room.image.attached? %>
+  <%= image_tag @room.image %>
+<% else %>
+  <%= image_tag 'default-image.png' %>
+<% end %>
+
+<%= @reservation.room.name %>
+<%= @reservation.room.introduction %>
+
+<%= form_with model: @reservation, method: :post, url: reservations_confirm_path do |f| %>
+  <div>
+    <%= f.label :check_in, "チェックイン" %>
+    <%= f.date_field :check_in %>
+  </div>
+  
+  <div>
+    <%= f.label :check_out, "チェックアウト" %>
+    <%= f.date_field :check_out %>
+  </div>
+  
+  <div>
+    <%= f.label :people, "人数" %>
+    <%= f.text_field :people %>
+  </div>
+
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "予約する" %>
+<% end %>

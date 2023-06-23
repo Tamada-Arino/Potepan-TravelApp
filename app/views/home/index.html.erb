@@ -1,0 +1,55 @@
+<div class="image-wrap">
+  <div class="home-content">
+    <h1 class="text-center text-light">
+      Potepan Shareで<br />
+      まだ体験したことのない<br />
+      旅をしよう
+    </h1>
+
+    <div class="top-search-form my-5">
+      <%= form_with url: search_rooms_path, method: :post do |f| %>
+        <%= f.text_field :keyword, placeholder: "エリアを検索" %>
+        <%= f.hidden_field :target, value: "area" %>
+        <%= f.submit"検索" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="home-second my-3">
+  <h2>おすすめエリア</h2>
+  <div class="d-flex justify-content-around">
+    <div class="top-search-image">
+      <%= form_with url: search_rooms_path, method: :post do |f| %>
+        <%= f.hidden_field :keyword, value: "東京都" %>
+        <%= f.hidden_field :target, value: "area" %>
+        <%= image_submit_tag("tokyo.jpg", class: "area-search tokyo") %>
+      <% end %>
+      <p>東京/Tokyo</p>
+    </div>
+    <div class="top-search-image">
+      <%= form_with url: search_rooms_path, method: :post do |f| %>
+        <%= f.hidden_field :keyword, value: "大阪府" %>
+        <%= f.hidden_field :target, value: "area" %>
+        <%= image_submit_tag("osaka.jpg", class: "area-search osaka") %>
+      <% end %>
+      <p>大阪/Osaka</p>
+    </div>
+    <div class="top-search-image">
+      <%= form_with url: search_rooms_path, method: :post do |f| %>
+        <%= f.hidden_field :keyword, value: "京都府" %>
+        <%= f.hidden_field :target, value: "area" %>
+        <%= image_submit_tag("kyoto.jpg", class: "area-search kyoto") %>
+      <% end %>
+      <p>京都/Kyoto</p>
+    </div>
+    <div class="top-search-image">
+      <%= form_with url: search_rooms_path, method: :post do |f| %>
+        <%= f.hidden_field :keyword, value: "札幌市" %>
+        <%= f.hidden_field :target, value: "area" %>
+        <%= image_submit_tag("sapporo.jpg", class: "area-search kyoto") %>
+      <% end %>
+      <p>札幌/Sapporo</p>
+    </div>
+  </div>
+</div>

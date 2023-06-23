@@ -1,0 +1,27 @@
+<h3>設定</h3>
+
+<div>
+  <%= link_to"アカウント", users_path %>
+  <%= link_to"プロフィール", users_profile_path %>
+</div>
+
+<div>
+	<table class="w-100 mt-4 table">
+		<tr>
+			<th class="h3">アカウント</th>
+			<td>
+				<%= link_to"編集", edit_user_registration_path %>
+			</td>
+		</tr>
+		<tr>
+			<th>メールアドレス</th>
+			<td>
+				<%= current_user.email %>
+			</td>
+		</tr>
+		<tr>
+			<th>パスワード</th>
+			<td>*********</td>
+		</tr>
+	</table>
+</div>

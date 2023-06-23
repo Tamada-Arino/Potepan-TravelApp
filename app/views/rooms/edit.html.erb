@@ -1,0 +1,38 @@
+<h3>施設情報編集</h3>
+
+<%= render "shared/error", obj: @room %>
+
+<%= form_with model:@room do |f| %>
+  <div>
+    <%= f.label :name, "施設名" %>
+    <%= f.text_field :name, :placeholder => "ルーム名を入力" %>
+  </div>
+
+  <div>
+    <%= f.label :introduction, "施設詳細" %>
+	<%= f.text_area :introduction, :placeholder => "施設詳細を入力" %>
+  </div>
+
+  <div>
+	<%= f.label :price, "料金" %>
+	<%= f.text_field :price, :placeholder => "一日あたりの料金を入力" %>
+  </div>
+
+  <div>
+    <%= f.label :address, "住所" %>
+	<%= f.text_field :address, :placeholder => "住所を入力" %>
+  </div>
+  
+  <div>
+	<%= f.label :image, "施設画像" %>
+	<%= f.file_field :image %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+
+  <div>
+	<%= f.submit "保存" %>
+  </div>
+<% end %>
+
+<%= link_to"前のページへ戻る", 'javascript:history.back()' %>
