@@ -33,7 +33,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'ransack'
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap'
 gem 'pry-rails'
 gem 'activestorage-validator'
 
