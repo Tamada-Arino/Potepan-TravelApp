@@ -1,0 +1,48 @@
+<h3>施設の新規登録</h3>
+
+<%= render "shared/error", obj: @room %>
+
+<%= form_with model:@room do |f| %>
+  <div>
+    <table>
+      <tr>
+        <th><%= f.label :name, "施設名" %></th>
+        <td><%= f.text_field :name, :placeholder => "ルーム名を入力" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :introduction, "施設詳細" %></th>
+        <td><%= f.text_area :introduction, :placeholder => "施設詳細を入力" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :price, "料金" %></th>
+        <td><%= f.text_field :price, :placeholder => "一日あたりの料金を入力" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :address, "住所" %></th>
+        <td><%= f.text_field :address, :placeholder => "住所を入力" %></td>
+      </tr>
+      
+      <tr>
+        <th><%= f.label :image, "施設画像" %></th>
+        <td><%= f.file_field :image %></td>
+      </tr>
+
+      <%= f.hidden_field :user_id, value: @user.id %>
+
+      <tr>
+        <td colspan="2">
+          <%= f.submit "保存", class: "btn btn-primary w-100" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <%= link_to"前のページへ戻る", 'javascript:history.back()', class: "btn btn-secondary w-100" %>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

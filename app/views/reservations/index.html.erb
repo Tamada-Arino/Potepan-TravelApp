@@ -1,0 +1,38 @@
+<h3>予約一覧</h3>
+<table class="w-100">
+  <thead>
+    <tr>
+      <th>画像</th>
+      <th>施設名</th>
+      <th>紹介文</th>
+      <th>合計金額</th>
+      <th>チェックイン</th>
+      <th>チェックアウト</th>
+      <th>予約確定日時</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+          <% if reservation.room.image.attached? %>
+            <%= image_tag reservation.room.image, class: "table-image" %>
+          <% else %>
+            <%= image_tag 'default-image.png', class:"table-image" %>
+          <% end %>
+        </td>
+        <td><%= link_to"#{reservation.room.name}", room_path(reservation.room_id) %></td>
+        <td><%= reservation.room.introduction.truncate(30) %></td>
+        <td>
+          <% stay_days = (reservation.check_out - reservation.check_in).to_i %>
+          <p>¥<%= (reservation.room.price * reservation.people * stay_days).to_s(:delimited) %></p>
+        </td>
+        <td><%= reservation.check_in.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.check_out.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= button_to"削除", reservation, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

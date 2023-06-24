@@ -1,0 +1,46 @@
+<h3>予約内容の確認</h3>
+
+<table class="center-block" >
+  <tr>
+    <th>チェックイン</th>
+    <td><%= @reservation.check_in.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th>チェックアウト</th>
+    <td><%= @reservation.check_out.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th>日数</th>
+    <td>
+      <% stay_days = (@reservation.check_out - @reservation.check_in).to_i %>
+      <%= stay_days %>日
+    </td>
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.people %>人</td>
+  </tr>
+   <tr>
+    <th>合計金額</th>
+    <td>¥<%= (@reservation.room.price * @reservation.people.to_i * stay_days ).to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>上記内容で正しければ「確定」ボタンを押してください。</p><td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <%= form_with model: @reservation do |f| %>
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :room_id %>
+        <%= f.hidden_field :check_in %>
+        <%= f.hidden_field :check_out %>
+        <%= f.hidden_field :people %>
+        <%= f.submit "確定する", class: "btn btn-primary w-100" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= link_to"キャンセル", 'javascript:history.back()', class: "btn btn-secondary w-100" %></td>
+  </tr>
+</table>
+

@@ -18,5 +18,10 @@ module TravelApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    I18n.available_locales = %i(ja en)
+    I18n.enforce_available_locales = true
+    I18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
   end
 end

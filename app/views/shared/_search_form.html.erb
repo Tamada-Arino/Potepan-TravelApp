@@ -1,0 +1,16 @@
+<div class="top-search-form d-flex my-5">
+  <div class="mr-5">
+    <%= form_with url: search_rooms_path, method: :post do |f| %>
+      <%= f.text_field :keyword, placeholder: "エリアを検索" %>
+      <%= f.hidden_field :target, value: "area" %>
+      <%= f.submit"検索" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with url: search_rooms_path, method: :post do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワード検索" %>
+      <%= f.hidden_field :target, value: "keyword" %>
+      <%= f.submit"検索" %>
+    <% end %>
+  </div>
+</div>
