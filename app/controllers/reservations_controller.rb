@@ -6,9 +6,6 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.where(user_id: current_user.id)
   end
 
-  def new
-  end
-
   def confirm
     @reservation = Reservation.new(reservation_params)
     @room = Room.find_by(params[:room_id])
@@ -27,9 +24,6 @@ class ReservationsController < ApplicationController
       flash[:alert] = "予約に失敗しました"
       redirect_to reservations_path
     end
-  end
-  
-  def show
   end
 
   def edit
