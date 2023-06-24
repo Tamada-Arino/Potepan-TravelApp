@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reservations = Reservation.where(user_id: current_user.id)
+    @reservations = currentuser.reservations
   end
 
   def confirm
