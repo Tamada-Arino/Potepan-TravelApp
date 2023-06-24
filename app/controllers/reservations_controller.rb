@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @reservations = currentuser.reservations
+    @reservations = current_user.reservations
   end
 
   def confirm
@@ -23,21 +23,6 @@ class ReservationsController < ApplicationController
     else
       flash[:alert] = "予約に失敗しました"
       redirect_to reservations_path
-    end
-  end
-
-  def edit
-    @reseravation = Reservation.find(params[:id])
-    @room = Room.find(params[:room_id])
-  end
-
-  def update
-    @reservation = Reservation.new(reservation_params)
-    if @reservation.save
-      flash[:notice] = "再予約が完了しました"
-      redirect_to reservations_path
-    else
-      render "edit"
     end
   end
 
